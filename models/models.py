@@ -9,6 +9,18 @@ class Point:
   # Overload of the subtraction operator
   def __sub__(self, other):
     return Point(self.x - other.x, self.y - other.y)
+  
+  # Overload of the less than operator
+  def __lt__(self, other):
+    if self.x < other.x:
+      return True
+    elif self.x == other.x:
+      return self.y < other.y
+    return False
+
+  # Overload of the equal to operator
+  def __eq__(self, other):
+    return self.x == other.x and self.y == other.y
 
 
 class Segment:

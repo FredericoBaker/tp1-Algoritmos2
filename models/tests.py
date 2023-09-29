@@ -1,6 +1,49 @@
 from models import Point
 from models import Segment
 
+def testPointLessThan():
+  # Test for x values
+  p1 = Point(1, 5)
+  p2 = Point(2, 5)
+  assert p1 < p2, "Test failed: Expected p1 to be less than p2 based on x values"
+
+  # Test for same x values, different y values
+  p3 = Point(2, 3)
+  p4 = Point(2, 4)
+  assert p3 < p4, "Test failed: Expected p3 to be less than p4 based on y values"
+
+  # Test for neither being less than the other
+  p5 = Point(3, 3)
+  p6 = Point(2, 2)
+  assert not (p5 < p6), "Test failed: Expected p5 not to be less than p6"
+
+  print("All point less than tests passed!")
+
+
+def testPointEqualTo():
+  # Test for equal points
+  p1 = Point(1, 5)
+  p2 = Point(1, 5)
+  assert p1 == p2, "Test failed: Expected p1 to be equal to p2"
+
+  # Test for different x values
+  p3 = Point(1, 4)
+  p4 = Point(2, 4)
+  assert not (p3 == p4), "Test failed: Expected p3 not to be equal to p4"
+
+  # Test for different y values
+  p5 = Point(3, 5)
+  p6 = Point(3, 6)
+  assert not (p5 == p6), "Test failed: Expected p5 not to be equal to p6"
+
+  print("All point equal to tests passed!")
+
+
+# Run the tests
+testPointLessThan()
+testPointEqualTo()
+
+
 def test_orientation():
 
     # Test 1: If p0p1 is oriented clockwise in relation to p0p2
