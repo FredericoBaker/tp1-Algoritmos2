@@ -57,3 +57,23 @@ class Segment:
       return True
     else:
       return False
+    
+  def leftmostPoint(self):
+      if self.origin.x < self.destination.x or (self.origin.x == self.destination.x and self.origin.y < self.destination.y):
+          return self.origin
+      else:
+          return self.destination
+
+  def __lt__(self, other):
+      selfLeftmost = self.leftmostPoint()
+      otherLeftmost = other.leftmostPoint()
+      if selfLeftmost.x < otherLeftmost.x:
+          return True
+      elif selfLeftmost.x == otherLeftmost.x:
+          return selfLeftmost.y < otherLeftmost.y
+      return False
+
+  def __eq__(self, other):
+      selfLeftmost = self.leftmostPoint()
+      otherLeftmost = other.leftmostPoint()
+      return selfLeftmost.x == otherLeftmost.x and selfLeftmost.y == otherLeftmost.y

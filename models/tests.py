@@ -138,6 +138,38 @@ def testSegmentIntersect():
 
     print("All segment intersect tests passed!")
 
+def testLeftmostPointAndOrdering():
+    # Creating points
+    point1 = Point(2, 2)
+    point2 = Point(1, 1)
+    point3 = Point(1.5, 1.5)
+    point4 = Point(4, 5)
+    point5 = Point(1, 0.5)
+
+    # Creating segments
+    segmentA = Segment(point1, point2)  # Leftmost point is (1, 1)
+    segmentB = Segment(point3, point4)  # Leftmost point is (1.5, 1.5)
+    segmentC = Segment(point5, point4)  # Leftmost point is (1, 0.5)
+
+    # Test leftmostPoint
+    assert segmentA.leftmostPoint() == point2, "Test 1 Failed"
+    assert segmentB.leftmostPoint() == point3, "Test 2 Failed"
+    assert segmentC.leftmostPoint() == point5, "Test 3 Failed"
+
+    # Test ordering (__lt__)
+    assert segmentA < segmentB, "Test 4 Failed"  # Because (1, 1) is to the left of (1.5, 1.5)
+    assert not segmentB < segmentA, "Test 5 Failed"  # Opposite of Test 4
+    assert segmentC < segmentB, "Test 6 Failed"  # Both have x=1, but y=0.5 < y=1.5
+
+    # Test equality (__eq__)
+    segmentD = Segment(Point(3, 3), point2)  # Leftmost point is still (1, 1)
+    assert segmentA == segmentD, "Test 7 Failed"
+    assert not segmentA == segmentB, "Test 8 Failed"
+    assert not segmentA == segmentC, "Test 9 Failed"
+
+    print("All leftmost point and ordering tests passed passed!")
+
 test_orientation()
 testPointOnSegment()
 testSegmentIntersect()
+testLeftmostPointAndOrdering()
