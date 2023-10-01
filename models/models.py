@@ -18,9 +18,13 @@ class Point:
       return self.y < other.y
     return False
 
-  # Overload of the equal to operator
+  # Overload of the equal operator
   def __eq__(self, other):
     return self.x == other.x and self.y == other.y
+  
+  # Overload of the non equal operator
+  def __ne__(self, other):
+    return self.x != other.x or self.y != other.y
 
 
 class Segment:
