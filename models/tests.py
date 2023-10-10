@@ -38,6 +38,22 @@ def testPointEqualTo():
 
   print("All point equal to tests passed!")
 
+def test_distance():
+    p0 = Point(0,0)
+    p1 = Point(2,0)
+    assert p0.distance(p1) == 2, "Test 1 failed"
+
+    p2 = Point(2,5)
+    assert p2.distance(p2) == 0, "Test 2 failed"
+
+    p3 = Point(-10, 0)
+    assert p0.distance(p3) == 10, "Test 3 failed"
+    
+    p4 = Point(3,4)
+    p5 = Point(-3, -4)
+    assert p4.distance(p5) == 10, "Test 4 failed"
+
+    print("Distance function has been calculated correctly")
 
 # Run the tests
 testPointLessThan()
@@ -83,6 +99,8 @@ def test_orientation():
     assert seg4.direction(p13) < 0, "Test 6 Failed"
 
     print("All direction tests passed!")
+
+
 
 def testPointOnSegment():
 

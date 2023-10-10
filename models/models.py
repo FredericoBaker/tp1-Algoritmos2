@@ -26,6 +26,8 @@ class Point:
   def __ne__(self, other):
     return self.x != other.x or self.y != other.y
 
+  def distance(self, other):
+    return ((self.x - other.x)**2 + (self.y - other.y)**2)**(1/2)
 
 class Segment:
 
